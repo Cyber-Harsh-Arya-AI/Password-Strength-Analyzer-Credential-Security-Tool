@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-neon: #0df0e3;
+  --color-cyber-purple: #b026ff;
+  --color-cyber-red: #ff2a2a;
+  --color-cyber-dark: #0a0a0f;
+  --color-cyber-darker: #050508;
+  --color-cyber-panel: rgba(15, 15, 25, 0.7);
+
+  --font-mono: "Fira Code", "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-scan: scan 2s linear infinite;
+
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cyber-darker);
+    color: #e5e7eb; /* text-gray-200 */
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(13, 240, 227, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(176, 38, 255, 0.05) 0%, transparent 50%);
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+  }
+}
+
+@utility glass-panel {
+  background-color: var(--color-cyber-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@utility text-gradient {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-cyber-neon), var(--color-cyber-purple));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 240, 227, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 240, 227, 0.6);
+}
